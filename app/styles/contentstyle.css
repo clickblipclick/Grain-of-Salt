@@ -1,0 +1,27 @@
+.gos-ext--misleading {
+  background-color: #ffcccc; }
+  .gos-ext--misleading [class^="_"] {
+    background-color: transparent !important; }
+  .gos-ext--misleading::before {
+    background-color: red;
+    color: #fff;
+    content: 'The link shared here may be misleading. Check the source and look for the story on other news outlets.';
+    display: block;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center; }
+
+.gos-ext--satire {
+  background-color: #ffffcc; }
+  .gos-ext--satire .mtm a {
+    color: #000; }
+  .gos-ext--satire [class^="_"] {
+    background-color: transparent !important; }
+  .gos-ext--satire::before {
+    background-color: yellow;
+    color: #000;
+    content: 'The information below may be satirical or comedic, not factual.';
+    display: block;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center; }

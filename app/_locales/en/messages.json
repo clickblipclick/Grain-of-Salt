@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Grain of Salt",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Help yourself recognize news items from false, misleading, and &#34;satirical&#34; news sources.",
+    "description": "The description of the application"
+  }
+}

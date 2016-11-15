@@ -1,0 +1,48 @@
+{
+  "name": "__MSG_appName__",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "__MSG_appDescription__",
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "scripts/chromereload.js",
+      "scripts/background.js"
+    ]
+  },
+  "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "scripts/lodash.min.js",
+        "scripts/jquery-3.1.1.js",
+        "scripts/contentscript.js"
+      ],
+      "css": [
+        "styles/contentstyle.css"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon-19.png",
+      "38": "images/icon-38.png"
+    },
+    "default_title": "Grain of Salt",
+    "default_popup": "popup.html"
+  }
+}
