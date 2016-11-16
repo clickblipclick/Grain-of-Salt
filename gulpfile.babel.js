@@ -4,8 +4,64 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import del from 'del';
 import runSequence from 'run-sequence';
 import {stream as wiredep} from 'wiredep';
+import watchify from 'watchify';
+import browserify from 'browserify';
+import babel from 'babelify';
+import buffer from 'vinyl-buffer';
+import source from 'vinyl-source-stream';
+import es from 'event-stream';
+import path from 'path';
 
 const $ = gulpLoadPlugins();
+
+function compile(watch) {
+  const files = [
+    './app/scripts.babel/background.js',
+    './app/scripts.babel/chromereload.js',
+    './app/scripts.babel/contentscript.js'
+  ];
+
+  files.forEach((file) => {
+    const stream = watchify(browserify(file, { debug: true }).transform(babel));
+
+    function rebundle() {
+      stream.bundle()
+        .pipe(source(path.basename(file)))
+        // .pipe(buffer())
+        .pipe(gulp.dest('./app/scripts'));
+    }
+    if (watch) {
+      stream.on('update', () => {
+        console.log('=> Bundling...');
+        rebundle();
+      });
+    }
+
+    rebundle();
+
+  });
+
+
+
+  // function rebundle() {
+  //   stream.bundle()
+  //     .on('error', function(err) { console.error(err); this.emit('end'); })
+  //     .pipe(source('contentscript.js'))
+  //     .pipe(buffer())
+  //     .pipe($.sourcemaps.init({ loadMaps: true }))
+  //     .pipe($.sourcemaps.write('./'))
+  //     .pipe(gulp.dest('./app/scripts'));
+  // }
+  //
+  // if (watch) {
+  //   bundler.on('update', () => {
+  //     console.log('=> Bundling...');
+  //     rebundle();
+  //   });
+  // }
+
+  // rebundle();
+}
 
 gulp.task('scss', () => {
   return gulp.src('./app/scss/*.scss')
@@ -86,16 +142,17 @@ gulp.task('chromeManifest', () => {
 });
 
 gulp.task('babel', () => {
-  return gulp.src('app/scripts.babel/**/*.js')
-      .pipe($.babel({
-        presets: ['es2015']
-      }))
-      .pipe(gulp.dest('app/scripts'));
+  return compile();
+  // return gulp.src('app/scripts.babel/**/*.js')
+  //     .pipe($.babel({
+  //       presets: ['es2015']
+  //     }))
+  //     .pipe(gulp.dest('app/scripts'));
 });
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('watch', ['lint', 'babel'], () => {
+gulp.task('watch', ['lint'], () => {
   $.livereload.listen();
 
   gulp.watch([
@@ -107,7 +164,8 @@ gulp.task('watch', ['lint', 'babel'], () => {
   ]).on('change', $.livereload.reload);
 
   gulp.watch('app/scss/*.scss', ['scss']);
-  gulp.watch('app/scripts.babel/**/*.js', ['lint', 'babel']);
+  gulp.watch('app/scripts.babel/**/*.js', ['lint']);
+  compile(true);
   gulp.watch('bower.json', ['wiredep']);
 });
 
