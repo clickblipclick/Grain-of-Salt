@@ -1,7 +1,7 @@
 const distrubutors = [
   /(www.)?facebook.com/gi
 ];
-
+console.log('running');
 const badPages = [{
   page: 'associatedmediacoverage',
   type: 'misleading'
@@ -481,28 +481,27 @@ $(function() {
     checkPost(i, post) {
       const $post = $(post);
 
-      if (!$post.find('.userContentWrapper').length) {
+      // if (!$post.find('.userContentWrapper').length) {
         $post.find('a').each((i, link) => {
           const linkResult = this.checkLink($(link).attr('href'));
           if (linkResult && !$post.data('gos-ext-flagged')) {
             $post.data('gos-ext-flagged', 'true').addClass('gos-ext--'+linkResult);
           }
         });
-
-        $post.find('h5, h6').find('a').each((i, link) => {
+        $post.find('.fcg').find('a').each((i, link) => {
           const $link = $(link);
-
           if ($link.data('hovercard') && $link.data('hovercard').indexOf('page.php') > -1) {
             const matches = $link.attr('href').match(/^(http|https):\/\/(www\.)?facebook\.com\/([^\/]*)\/?/i);
             const page = matches[matches.length - 1];
             const pageResult = this.checkPage(page);
 
             if (pageResult && !$post.data('gos-ext-flagged')) {
+              console.log($link.data('hovercard'), 'flagged');
               $post.data('gos-ext-flagged', 'true').addClass('gos-ext--'+pageResult);
             }
           }
         });
-      }
+      // }
     }
 
     checkPage(page) {

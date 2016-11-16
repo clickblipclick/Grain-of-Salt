@@ -5,11 +5,13 @@
   .gos-ext--misleading::before {
     background-color: red;
     color: #fff;
-    content: 'The link shared here may be misleading. Check the source and look for the story on other news outlets.';
+    content: 'The link shared here may be misleading or false. Check the source and look for the story on other news outlets.';
     display: block;
     font-weight: bold;
     padding: 5px;
     text-align: center; }
+  .gos-ext--misleading .userContentWrapper::before {
+    display: none; }
 
 .gos-ext--satire {
   background-color: #ffffcc; }
@@ -25,3 +27,5 @@
     font-weight: bold;
     padding: 5px;
     text-align: center; }
+  .gos-ext--satire .userContentWrapper::before {
+    display: none; }
