@@ -40,27 +40,6 @@ function compile(watch) {
     rebundle();
 
   });
-
-
-
-  // function rebundle() {
-  //   stream.bundle()
-  //     .on('error', function(err) { console.error(err); this.emit('end'); })
-  //     .pipe(source('contentscript.js'))
-  //     .pipe(buffer())
-  //     .pipe($.sourcemaps.init({ loadMaps: true }))
-  //     .pipe($.sourcemaps.write('./'))
-  //     .pipe(gulp.dest('./app/scripts'));
-  // }
-  //
-  // if (watch) {
-  //   bundler.on('update', () => {
-  //     console.log('=> Bundling...');
-  //     rebundle();
-  //   });
-  // }
-
-  // rebundle();
 }
 
 gulp.task('scss', () => {
