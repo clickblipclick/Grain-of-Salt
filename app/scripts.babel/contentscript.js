@@ -1,7 +1,7 @@
 const distrubutors = [
   /(www.)?facebook.com/gi
 ];
-console.log('running');
+
 const badPages = [{
   page: 'associatedmediacoverage',
   type: 'misleading'
@@ -496,7 +496,6 @@ $(function() {
             const pageResult = this.checkPage(page);
 
             if (pageResult && !$post.data('gos-ext-flagged')) {
-              console.log($link.data('hovercard'), 'flagged');
               $post.data('gos-ext-flagged', 'true').addClass('gos-ext--'+pageResult);
             }
           }
