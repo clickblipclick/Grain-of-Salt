@@ -1,9 +1,29 @@
-$red: red;
-$yellow: yellow;
+$red: #f00;
+$orange: #f90;
+$yellow: #ff0;
+$blue: #77a3ff;
+
 $white: #fff;
 $black: #000;
 
-$misleading-background: $red;
-$misleading-text: $white;
-$satire-background: $yellow;
-$satire-text: $black;
+$colors: (
+  max: (
+    bg: $red,
+    text: $white
+  ),
+
+  medium: (
+    bg: $orange,
+    text: $white
+  ),
+
+  low: (
+    bg: $yellow,
+    text: $black
+  ),
+
+  min: (
+    bg: $blue,
+    text: $white
+  )
+);

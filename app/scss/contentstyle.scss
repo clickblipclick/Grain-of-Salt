@@ -1,59 +1,27 @@
 @import 'vars';
 
-.gos-ext {
-  &--misleading {
-    background-color: lighten($misleading-background, 40);
+$levels: 'max' 'medium' 'low' 'min';
 
-    .mtm a {
-      // color: $misleading-text;
-    }
+@mixin generate-classes($map) {
+  .gos-ext-banner {
+    background-color: map-get($map, bg);
+    border-left: 1px solid darken(map-get($map, bg), 5);
+    border-right: 1px solid darken(map-get($map, bg), 5);
+    border-top: 1px solid darken(map-get($map, bg), 5);
+    padding: .5rem;
+    text-align: center;
 
-    [class^="_"] {
-      background-color: transparent !important;
-    }
-
-    &::before {
-      background-color: $misleading-background;
-      color: $misleading-text;
-      content: 'The link shared here may be misleading or false. Check the source and look for the story on other news outlets.';
-      display: block;
-      font-weight: bold;
-      padding: 5px;
-      text-align: center;
-    }
-
-    .userContentWrapper {
-      &::before {
-        display: none;
-      }
+    h1,
+    p {
+      color: map-get($map, text);
+      margin: 0;
+      padding: .25em;
     }
   }
+}
 
-  &--satire {
-    background-color: lighten($satire-background, 40);
-
-    .mtm a {
-      color: $satire-text;
-    }
-
-    [class^="_"] {
-      background-color: transparent !important;
-    }
-
-    &::before {
-      background-color: $satire-background;
-      color: $satire-text;
-      content: 'The information below may be satirical or comedic, not factual.';
-      display: block;
-      font-weight: bold;
-      padding: 5px;
-      text-align: center;
-    }
-
-    .userContentWrapper {
-      &::before {
-        display: none;
-      }
-    }
+@each $level in $levels {
+  .gos-ext-flagged--#{$level} {
+    @include generate-classes(map-get($colors, $level));
   }
 }

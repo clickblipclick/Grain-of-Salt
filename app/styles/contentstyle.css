@@ -1,31 +1,51 @@
-.gos-ext--misleading {
-  background-color: #ffcccc; }
-  .gos-ext--misleading [class^="_"] {
-    background-color: transparent !important; }
-  .gos-ext--misleading::before {
-    background-color: red;
+.gos-ext-flagged--max .gos-ext-banner {
+  background-color: #f00;
+  border-left: 1px solid #e60000;
+  border-right: 1px solid #e60000;
+  border-top: 1px solid #e60000;
+  padding: .5rem;
+  text-align: center; }
+  .gos-ext-flagged--max .gos-ext-banner h1,
+  .gos-ext-flagged--max .gos-ext-banner p {
     color: #fff;
-    content: 'The link shared here may be misleading or false. Check the source and look for the story on other news outlets.';
-    display: block;
-    font-weight: bold;
-    padding: 5px;
-    text-align: center; }
-  .gos-ext--misleading .userContentWrapper::before {
-    display: none; }
+    margin: 0;
+    padding: .25em; }
 
-.gos-ext--satire {
-  background-color: #ffffcc; }
-  .gos-ext--satire .mtm a {
-    color: #000; }
-  .gos-ext--satire [class^="_"] {
-    background-color: transparent !important; }
-  .gos-ext--satire::before {
-    background-color: yellow;
+.gos-ext-flagged--medium .gos-ext-banner {
+  background-color: #f90;
+  border-left: 1px solid #e68a00;
+  border-right: 1px solid #e68a00;
+  border-top: 1px solid #e68a00;
+  padding: .5rem;
+  text-align: center; }
+  .gos-ext-flagged--medium .gos-ext-banner h1,
+  .gos-ext-flagged--medium .gos-ext-banner p {
+    color: #fff;
+    margin: 0;
+    padding: .25em; }
+
+.gos-ext-flagged--low .gos-ext-banner {
+  background-color: #ff0;
+  border-left: 1px solid #e6e600;
+  border-right: 1px solid #e6e600;
+  border-top: 1px solid #e6e600;
+  padding: .5rem;
+  text-align: center; }
+  .gos-ext-flagged--low .gos-ext-banner h1,
+  .gos-ext-flagged--low .gos-ext-banner p {
     color: #000;
-    content: 'The information below may be satirical or comedic, not factual.';
-    display: block;
-    font-weight: bold;
-    padding: 5px;
-    text-align: center; }
-  .gos-ext--satire .userContentWrapper::before {
-    display: none; }
+    margin: 0;
+    padding: .25em; }
+
+.gos-ext-flagged--min .gos-ext-banner {
+  background-color: #77a3ff;
+  border-left: 1px solid #5e92ff;
+  border-right: 1px solid #5e92ff;
+  border-top: 1px solid #5e92ff;
+  padding: .5rem;
+  text-align: center; }
+  .gos-ext-flagged--min .gos-ext-banner h1,
+  .gos-ext-flagged--min .gos-ext-banner p {
+    color: #fff;
+    margin: 0;
+    padding: .25em; }
