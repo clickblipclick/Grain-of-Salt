@@ -30,8 +30,6 @@
         "https://www.facebook.com/*"
       ],
       "js": [
-        "scripts/lodash.min.js",
-        "scripts/jquery-3.1.1.js",
         "scripts/contentscript.js"
       ],
       "css": [

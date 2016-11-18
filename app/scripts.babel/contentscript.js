@@ -1,4 +1,6 @@
 import publications from './publications';
+import find from 'lodash/find';
+import $ from 'jquery';
 const { sites, pages } = publications;
 
 $(function() {
@@ -99,7 +101,7 @@ $(function() {
 
     checkPage(page) {
       if (typeof page === 'string') {
-        var pageObj = _.find(pages, (pageObj) => {
+        var pageObj = find(pages, (pageObj) => {
           return (pageObj.page.toLowerCase() === page.toLowerCase());
         });
         return (typeof pageObj !== 'undefined') ? pageObj.types : false;
