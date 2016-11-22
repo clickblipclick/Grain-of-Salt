@@ -81,7 +81,9 @@ $(function() {
       $post.find('a').each((i, link) => {
         const linkResult = this.checkLink($(link).attr('href'));
         if (linkResult && !$post.data('gos-ext-flagged')) {
-          $post.prepend(this.createWarning(linkResult)).data('gos-ext-flagged', 'true').addClass(this.getClass(this.getScore(linkResult)));
+          if (!$post.parents('.userContentWrapper').length) {
+            $post.prepend(this.createWarning(linkResult)).data('gos-ext-flagged', 'true').addClass(this.getClass(this.getScore(linkResult)));
+          }
         }
       });
 
