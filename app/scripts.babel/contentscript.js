@@ -81,9 +81,7 @@ $(function() {
       $post.find('a').each((i, link) => {
         const linkResult = this.checkLink($(link).attr('href'));
         if (linkResult && !$post.data('gos-ext-flagged')) {
-          if (!$post.parents('.userContentWrapper').length) {
-            $post.prepend(this.createWarning(linkResult)).data('gos-ext-flagged', 'true').addClass(this.getClass(this.getScore(linkResult)));
-          }
+          this.flagPost(linkResult, $post);
         }
       });
 
@@ -93,12 +91,18 @@ $(function() {
           const matches = $link.attr('href').match(/^(http|https):\/\/(www\.)?facebook\.com\/([^\/]*)\/?/i);
           const page = matches[matches.length - 1];
           const pageResult = this.checkPage(page);
-
           if (pageResult && !$post.data('gos-ext-flagged')) {
-            $post.prepend(this.createWarning(pageResult)).data('gos-ext-flagged', 'true').addClass(this.getClass(this.getScore(pageResult)));
+            this.flagPost(pageResult, $post);
           }
         }
       });
+    }
+
+    flagPost(result, $post) {
+      $post.data('gos-ext-flagged', 'true');
+      if (!$post.parents('.userContentWrapper').length) {
+        $post.prepend(this.createWarning(result)).addClass(this.getClass(this.getScore(result)));
+      }
     }
 
     checkPage(page) {

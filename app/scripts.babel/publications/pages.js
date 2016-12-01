@@ -8,6 +8,9 @@ const badPages = [{
   page: 'Breitbart',
   types: [2,3]
 },{
+  page: 'OccupyDemocrats',
+  types: [3]
+},{
   page: 'LiberalAmerica.org',
   types: [2,3]
 },{
