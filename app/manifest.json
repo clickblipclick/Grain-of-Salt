@@ -1,7 +1,7 @@
 {
   "name": "Grain of Salt",
   "version": "0.0.6",
-  "manifest_version": 3,
+  "manifest_version": 2,
   "description": "A Chrome extension to help you identify false, misleading, and satirical news sources on Facebook.",
   "icons": {
     "16": "images/icon-16.png",
