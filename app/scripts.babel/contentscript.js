@@ -3,6 +3,8 @@ import find from 'lodash/find';
 import $ from 'jquery';
 const { sites, pages } = publications;
 
+const feedItemClass = '.fbUserContent';
+
 $(function() {
   class GrainOfSalt {
     constructor(hostname) {
@@ -15,7 +17,7 @@ $(function() {
     }
 
     checkPosts() {
-      const $posts = $('.userContentWrapper');
+      const $posts = $(feedItemClass);
       if (this.posts.length !== $posts.length) {
         $posts.each(this.checkPost.bind(this));
         this.posts = $posts;
@@ -100,7 +102,7 @@ $(function() {
 
     flagPost(result, $post) {
       $post.data('gos-ext-flagged', 'true');
-      if (!$post.parents('.userContentWrapper').length) {
+      if (!$post.parents(feedItemClass).length) {
         $post.prepend(this.createWarning(result)).addClass(this.getClass(this.getScore(result)));
       }
     }
